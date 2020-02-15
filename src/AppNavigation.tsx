@@ -13,7 +13,7 @@ export const AppNavigation = () => {
         setCurrentPage(page);
     }
 
-    const menuItemClassName = (page: AppPage) => `item grey ${currentPage === page ? "active" : ""}`;
+    const menuItemClassName = (page: AppPage) => `item grey ${currentPage.includes(page) ? "active" : ""}`;
 
     return (
         <div style={{ justifyContent: "center", fontSize: "small" }} className="ui secondary pointing menu">
