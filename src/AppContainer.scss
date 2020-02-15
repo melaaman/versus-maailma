@@ -1,0 +1,10 @@
+.ui.text.container {
+    font-size: small;
+    padding: 50px;
+}
+
+  @media (max-width: 500px) {
+    .ui.text.container {
+      padding: 10px 5px !important;
+    }
+}

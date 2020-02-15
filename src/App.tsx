@@ -1,25 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Container } from 'semantic-ui-react';
+import { AppContainer } from "./AppContainer";
+import {
+  BrowserRouter as Router
+} from "react-router-dom";
+import { AppNavigation } from "./AppNavigation";
 import './App.css';
 
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Router>
+        <div className="App">
+          <div className="App-header">
+            versus maailma
+          </div>
+          <AppNavigation />
+          <div className="App-content">
+            <AppContainer />
+          </div>
+          <div className="App-footer">
+            Erika Laamanen
+          </div>
+        </div>
+      </Router>
+    </Container>
   );
 }
 
