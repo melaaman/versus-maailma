@@ -30,5 +30,5 @@
 
 @font-face {
   font-family: neon;
-  src: url(AUTOMANI.TTF)
+  src: url(AUTOMANI.TTF) format('truetype')
 }
