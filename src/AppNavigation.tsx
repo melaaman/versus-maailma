@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from "react-router-dom";
 
 type AppPage = "home" | "essays" | "shortly";
 
 export const AppNavigation = () => {
-    const pathName = window.location.pathname;
-    const slicedPathName: string = pathName.length > 1 ? pathName.slice(1) : "home";
+    const pathName = useLocation();
 
-    const [currentPage, setCurrentPage] = useState(slicedPathName);
+    const [currentPage, setCurrentPage] = useState(pathName.pathname.slice(1));
 
-    function handleOnClick(page: AppPage) {
-        setCurrentPage(page);
-    }
+    useEffect(() => {
+        const path = pathName.pathname === "/" ? "home" : pathName.pathname.slice(1);
+        setCurrentPage(path);
+    }, [pathName]);
 
     const menuItemClassName = (page: AppPage) => `item grey ${currentPage.includes(page) ? "active" : ""}`;
 
     return (
         <div style={{ justifyContent: "center", fontSize: "small" }} className="ui secondary pointing menu">
-            <Link to="/" className={menuItemClassName("home")} onClick={() => handleOnClick("home")}>
+            <Link to="/" className={menuItemClassName("home")}>
                 Etusivu
-        </Link>
-            <Link to="/essays" className={menuItemClassName("essays")} onClick={() => handleOnClick("essays")}>
+            </Link>
+            <Link to="/essays" className={menuItemClassName("essays")}>
                 Esseitä
-        </Link>
-            <Link to="/shortly" className={menuItemClassName("shortly")} onClick={() => handleOnClick("shortly")}>
+            </Link>
+            <Link to="/shortly" className={menuItemClassName("shortly")}>
                 Lyhyesti
-        </Link>
+            </Link>
         </div>
     )
 }
