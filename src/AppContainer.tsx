@@ -6,6 +6,7 @@ import {
 import { Home } from "./Home";
 import { Essays } from "./Essays";
 import { ShortTexts } from "./ShortTexts";
+import history from './history';
 import './AppContainer.scss';
 
 export const AppContainer = () => {
@@ -13,7 +14,7 @@ export const AppContainer = () => {
         <div className="ui main text container">
             <Switch>
                 <Route path="/essays">
-                    <Essays />
+                    <Essays history={history} />
                 </Route>
                 <Route path="/shortly">
                     <ShortTexts />
