@@ -1,12 +1,10 @@
 import React from 'react';
 import { EssayStructure } from "../Essay";
-
-const quote = { fontSize: "smaller" };
-const italic = { fontStyle: "italic" };
-
+import { italic, quote } from "./essayStyles";
 
 export const OnFiction: EssayStructure = {
     title: "Mitäpä sinusta fiktio",
+    url: "fiktiosta",
     content: <div>
         <p>
             Saadakseen selville, onko hänen setänsä murhannut hänen isänsä, Hamlet järjestää näytelmän,

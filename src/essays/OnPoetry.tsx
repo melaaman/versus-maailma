@@ -4,6 +4,7 @@ import { EssayStructure } from "../Essay";
 
 export const OnPoetry: EssayStructure = {
     title: "Puoliksi kuollut",
+    url: "runoudesta",
     content: <div>
         <p>
             At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium

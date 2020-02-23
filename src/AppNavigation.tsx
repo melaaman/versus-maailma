@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from "react-router-dom";
 
-type AppPage = "home" | "essays" | "shortly";
+type AppPage = "home" | "esseita" | "lyhyesti";
 
 export const AppNavigation = () => {
-    const pathName = useLocation();
-
-    const [currentPage, setCurrentPage] = useState(pathName.pathname.slice(1));
+    const location = useLocation();
+    const [currentPage, setCurrentPage] = useState(location.pathname.slice(1));
 
     useEffect(() => {
-        const path = pathName.pathname === "/" ? "home" : pathName.pathname.slice(1);
+        const path = location.pathname === "/" ? "home" : location.pathname.slice(1);
         setCurrentPage(path);
-    }, [pathName]);
+    }, [location]);
 
     const menuItemClassName = (page: AppPage) => `item grey ${currentPage.includes(page) ? "active" : ""}`;
 
@@ -20,10 +19,10 @@ export const AppNavigation = () => {
             <Link to="/" className={menuItemClassName("home")}>
                 Etusivu
             </Link>
-            <Link to="/essays" className={menuItemClassName("essays")}>
+            <Link to="/esseita" className={menuItemClassName("esseita")}>
                 Esseitä
             </Link>
-            <Link to="/shortly" className={menuItemClassName("shortly")}>
+            <Link to="/lyhyesti" className={menuItemClassName("lyhyesti")}>
                 Lyhyesti
             </Link>
         </div>
