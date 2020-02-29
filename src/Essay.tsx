@@ -3,6 +3,7 @@ import React from 'react';
 export interface EssayStructure {
     title: string;
     url: string;
+    description: JSX.Element,
     content: JSX.Element;
 }
 

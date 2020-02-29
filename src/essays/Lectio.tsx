@@ -6,6 +6,10 @@ import { italic, quote } from "./essayStyles";
 export const Lectio: EssayStructure = {
     url: "lectio",
     title: "Lectio praecursoria: Tosi uni",
+    description: <p>
+        Lauri Viidan runoilijakuva on pitkälti muodostunut hänen esikoisteoksena, vuonna 1947 ilmestyneen
+        <span style={italic}> Betonimyllärin</span>, pohjalta. Miehinen runouden työläinen, runomittojen taitaja...
+        </p>,
     content: <div>
         <p>
             Lauri Viidan runoilijakuva on pitkälti muodostunut hänen esikoisteoksena, vuonna 1947 ilmestyneen

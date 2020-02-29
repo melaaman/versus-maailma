@@ -5,6 +5,10 @@ import { italic, quote } from "./essayStyles";
 export const OnFiction: EssayStructure = {
     title: "Mitäpä sinusta fiktio",
     url: "fiktiosta",
+    description: <p>
+        Saadakseen selville, onko hänen setänsä murhannut hänen isänsä, Hamlet järjestää näytelmän,
+        jossa oletettuun tapahtumaan viitataan. Tarkoituksena on paljastaa sedän kammottava salaisuus...
+        </p>,
     content: <div>
         <p>
             Saadakseen selville, onko hänen setänsä murhannut hänen isänsä, Hamlet järjestää näytelmän,

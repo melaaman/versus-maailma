@@ -8,12 +8,12 @@
 }
 
 .App-header {
-  font-family: "Lucida Sans Typewriter";
+  font-family: 'Courier New', Courier, monospace;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: calc(20px + 2vmin);
-  font-weight: bold;
+  font-size: calc(20px + 3vmin);
+  font-weight: bolder;
   padding: 3rem 0;
   color: rgb(255, 105, 180, 0.40);
   text-shadow: 0 0 20px rgba(205, 205, 177, 0.92),

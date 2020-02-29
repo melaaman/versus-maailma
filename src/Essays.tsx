@@ -2,6 +2,7 @@ import React from 'react';
 import { OnFiction } from "./essays/OnFiction";
 import { Link } from "react-router-dom";
 import { Lectio } from "./essays/Lectio";
+import { List } from "semantic-ui-react";
 
 export const collection1 = [
     OnFiction,
@@ -12,17 +13,24 @@ export const collection1 = [
 export const Essays: React.FunctionComponent<{}> = () => {
 
     return (
-        <div style={{ textAlign: "justify" }}>
+        <List divided relaxed>
             {collection1.map(essay => {
                 return (
-                    <Link key={essay.url} to={"/esseita/" + essay.url}>
-                        <div style={{ letterSpacing: "0", color: "black", marginBottom: "20px" }} >
-                            <i style={{ marginRight: "20px" }} className="align left icon" />
-                            {essay.title.toUpperCase()}
-                        </div>
-                    </Link>
+                    <List.Item key={essay.url} style={{ textAlign: "justify", padding: "15px" }}>
+                        <List.Content>
+                            <List.Header style={{ textAlign: "center" }}>
+                                <Link to={"/esseita/" + essay.url}>
+                                    <div style={{ color: "black", padding: "5px" }} >
+                                        <i style={{ marginRight: "20px" }} className="align left icon" />
+                                        {essay.title.toUpperCase()}
+                                    </div>
+                                </Link>
+                            </List.Header>
+                            <List.Description>{essay.description}</List.Description>
+                        </List.Content>
+                    </List.Item>
                 );
             })}
-        </div>
+        </List>
     )
 }
