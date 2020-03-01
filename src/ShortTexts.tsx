@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import { ShortTextBox } from "./ShortTextBox";
 import { Dropdown, DropdownProps } from 'semantic-ui-react'
+import { getAll } from "./texts";
 
 const genreOptions = [
     { key: 'all', value: 'all', text: 'Kaikki' },
@@ -11,6 +12,17 @@ const genreOptions = [
 ]
 
 export const ShortTexts = () => {
+
+    useEffect(() => {
+        getAll().then(data => {
+            console.log(data)
+        })
+        return () => {
+            getAll().then(data => {
+                console.log(data)
+            })
+        };
+    }, []);
 
     function handleOnChange(__e: any, data: DropdownProps) {
         console.log(data.value)
