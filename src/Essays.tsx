@@ -26,7 +26,7 @@ export const Essays: React.FunctionComponent<{}> = () => {
                                     </div>
                                 </Link>
                             </List.Header>
-                            <List.Description>{essay.description}</List.Description>
+                            <List.Description style={{ letterSpacing: "normal" }}>{essay.description}</List.Description>
                         </List.Content>
                     </List.Item>
                 );

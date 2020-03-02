@@ -1,37 +1,52 @@
-import React, { useEffect } from 'react';
-// import { ShortTextBox } from "./ShortTextBox";
+import React, { useEffect, useState } from 'react';
 import { Dropdown, DropdownProps } from 'semantic-ui-react'
 import { getAll } from "./texts";
+import { ShortTextBox, ShortTextStructure } from "./ShortTextBox";
 
 const genreOptions = [
-    { key: 'all', value: 'all', text: 'Kaikki' },
-    { key: 'books', value: 'books', text: 'Kirjat' },
-    { key: 'movies', value: 'movies', text: 'Elokuvat' },
-    { key: 'series', value: 'series', text: 'Tv-sarjat' },
-    { key: 'games', value: 'games', text: 'Pelit' }
+    { key: "all", value: "all", text: "Kaikki" },
+    { key: "literature", value: "literature", text: "Kirjat" },
+    { key: "movie", value: "movie", text: "Elokuvat" },
+    { key: "tv", value: "tv", text: "Tv-sarjat" },
+    { key: "game", value: "game", text: "Pelit" }
 ]
 
 export const ShortTexts = () => {
+    let initialShortTextState: ShortTextStructure[] = [];
+    const [shortTexts, setShortTexts] = useState(initialShortTextState);
+    const [currentGenre, setCurrentGenre] = useState("all");
+    const [filterState, setFilterState] = useState("");
 
     useEffect(() => {
         getAll().then(data => {
-            console.log(data)
-        })
-        return () => {
-            getAll().then(data => {
-                console.log(data)
-            })
-        };
+            setShortTexts(data);
+        });
     }, []);
 
-    function handleOnChange(__e: any, data: DropdownProps) {
-        console.log(data.value)
+    function handleTextOnChange(event: React.FormEvent<HTMLInputElement>) {
+        setFilterState(event.currentTarget.value);
     }
+
+    function handleOnChange(__e: any, data: DropdownProps) {
+        setCurrentGenre(data.value as string)
+    }
+
+    function isEntryIncluded(word: string): boolean {
+        const convertedWord = word.toLowerCase();
+        const convertedEntry = filterState.toLowerCase();
+        return convertedWord.includes(convertedEntry);
+    }
+
+    const filteredShortTextsByGenre: ShortTextStructure[] =
+        currentGenre === "all" ? shortTexts : shortTexts.filter(text => text.genre === currentGenre);
+
+    const filteredShortTextsByFilteredState: ShortTextStructure[] =
+        filteredShortTextsByGenre.filter(text => isEntryIncluded(text.author) || isEntryIncluded(text.work));
 
     return (
         <div style={{ display: "grid", gridTemplateColumns: "1fr auto", paddingBottom: "20px" }} className="ShortTexts-selection">
             <div style={{ marginRight: "5px", minWidth: "0" }} className="ui left icon input">
-                <input type="text" placeholder="Etsi tekstejä..." />
+                <input type="text" placeholder="Etsi teosta tai tekijää..." onChange={handleTextOnChange} />
                 <i className="hand point right outline icon" />
             </div>
             <Dropdown
@@ -43,10 +58,13 @@ export const ShortTexts = () => {
                 onChange={handleOnChange}
                 style={{ minWidth: "100px" }}
             />
-            <div style={{ marginTop: "20px" }}>
-                (TBA)
+            <div style={{ marginTop: "20px", gridColumn: "1 / span 2" }}>
+                {filteredShortTextsByFilteredState.map((text, index) => {
+                    return (
+                        <ShortTextBox key={index} shortText={text} />
+                    )
+                })}
             </div>
-            {/* <ShortTextBox /> */}
         </div>
     )
 }
