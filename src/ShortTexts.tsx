@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Dropdown, DropdownProps } from 'semantic-ui-react'
+import { Dropdown, DropdownProps, Loader } from 'semantic-ui-react'
 import { getAll } from "./texts";
 import { ShortTextBox, ShortTextStructure } from "./ShortTextBox";
 
@@ -16,9 +16,11 @@ export const ShortTexts = () => {
     const [shortTexts, setShortTexts] = useState(initialShortTextState);
     const [currentGenre, setCurrentGenre] = useState("all");
     const [filterState, setFilterState] = useState("");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         getAll().then(data => {
+            setLoading(false);
             setShortTexts(data);
         });
     }, []);
@@ -59,6 +61,7 @@ export const ShortTexts = () => {
                 style={{ minWidth: "100px" }}
             />
             <div style={{ marginTop: "20px", gridColumn: "1 / span 2" }}>
+                <Loader active={loading} inline='centered' style={{ marginTop: "40px" }} />
                 {filteredShortTextsByFilteredState.map((text, index) => {
                     return (
                         <ShortTextBox key={index} shortText={text} />
