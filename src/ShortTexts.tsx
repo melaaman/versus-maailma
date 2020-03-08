@@ -62,7 +62,7 @@ export const ShortTexts = () => {
             />
             <div style={{ marginTop: "20px", gridColumn: "1 / span 2" }}>
                 <Loader active={loading} inline='centered' style={{ marginTop: "40px" }} />
-                {filteredShortTextsByFilteredState.map((text, index) => {
+                {filteredShortTextsByFilteredState.reverse().map((text, index) => {
                     return (
                         <ShortTextBox key={index} shortText={text} />
                     )
