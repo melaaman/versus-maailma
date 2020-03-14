@@ -16,7 +16,7 @@ export const Essays: React.FunctionComponent<{}> = () => {
         <List divided relaxed>
             {collection1.map(essay => {
                 return (
-                    <List.Item key={essay.url} style={{ textAlign: "justify", padding: "15px" }}>
+                    <List.Item key={essay.url} style={{ textAlign: "justify", padding: "10px" }}>
                         <List.Content>
                             <List.Header style={{ textAlign: "center" }}>
                                 <Link to={"/esseita/" + essay.url}>
