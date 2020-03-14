@@ -37,7 +37,7 @@ export const ShortTextBox = (props: ShortTextBoxProps) => {
             letterSpacing: "0"
         }} className={`active content`}>
             <Card.Content style={{ fontWeight: "bold" }} header={title.toUpperCase()} />
-            <Card.Content style={{ textAlign: "justify", fontSize: "larger" }} description={content} />
+            <Card.Content style={{ textAlign: "justify", fontSize: "larger" }}>{content}</Card.Content>
             <Card.Content extra>
                 <i className={`${getIcon(genre)} icon`} />{author}: {work} ({publisher} {year})<br />{date}
             </Card.Content>
