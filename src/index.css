@@ -11,8 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-@font-face {
-  font-family: 'Neon';
-  src: url(./assets/fonts/AUTOMANI.TTF); 
-}
