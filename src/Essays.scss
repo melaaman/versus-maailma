@@ -1,0 +1,17 @@
+.Essays {
+    text-align: justify;
+    padding: 10px;
+
+    &-header {
+        text-align: center;
+
+        &-link {
+            color: black;
+            padding: 5px;
+        }
+    }
+
+    &-description {
+        letter-spacing: normal;
+    }
+}

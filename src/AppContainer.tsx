@@ -5,19 +5,21 @@ import {
     useLocation
 } from "react-router-dom";
 import { Home } from "./Home";
-import { Essays, collection1 } from "./Essays";
+import { Essays } from "./Essays";
 import { ShortTexts } from "./ShortTexts";
-import './AppContainer.scss';
 import { Essay } from "./Essay";
+import { collection1 } from "./entities";
+import './AppContainer.scss';
 
 export const AppContainer = () => {
     const location = useLocation();
 
-    const pathIndex = location.pathname.lastIndexOf("/");
     let essayIndex = -1;
+
+    const lastBackslashIndex = location.pathname.lastIndexOf("/");
     collection1.forEach((essay, index) => {
-        const lastItem = location.pathname.slice(pathIndex + 1);
-        if (lastItem === essay.url) {
+        const lastPathItem = location.pathname.slice(lastBackslashIndex + 1);
+        if (lastPathItem === essay.url) {
             essayIndex = index;
         }
     });

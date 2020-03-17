@@ -1,5 +1,5 @@
 import React from 'react';
-import { EssayStructure } from "../Essay";
+import { EssayStructure } from "../entities";
 
 
 export const OnPoetry: EssayStructure = {

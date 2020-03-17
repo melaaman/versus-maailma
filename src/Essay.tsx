@@ -1,11 +1,6 @@
 import React from 'react';
-
-export interface EssayStructure {
-    title: string;
-    url: string;
-    description: JSX.Element,
-    content: JSX.Element;
-}
+import { EssayStructure } from "./entities";
+import './Essay.scss';
 
 interface EssayProps {
     essay: EssayStructure;
@@ -16,10 +11,10 @@ export const Essay = (props: EssayProps) => {
 
     return (
         <div className="Essay">
-            <div style={{ fontWeight: "bold", marginBottom: "15px" }} >
+            <div className="Essay-title" >
                 {essay.title.toUpperCase()}
             </div>
-            <div style={{ letterSpacing: "0", textAlign: "justify" }} >
+            <div className="Essay-content">
                 {essay.content}
             </div>
         </div>

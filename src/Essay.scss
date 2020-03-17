@@ -1,0 +1,11 @@
+.Essay {
+    &-title {
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    &-content {
+        letter-spacing: 0;
+        text-align: justify;
+    }
+}

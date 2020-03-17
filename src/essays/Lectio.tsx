@@ -1,6 +1,6 @@
 import React from 'react';
-import { EssayStructure } from "../Essay";
 import { italic, quote } from "./essayStyles";
+import { EssayStructure } from "../entities";
 
 
 export const Lectio: EssayStructure = {
