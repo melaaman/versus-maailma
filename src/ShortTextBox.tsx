@@ -14,6 +14,8 @@ export const ShortTextBox = (props: ShortTextBoxProps) => {
         switch (genre) {
             case ("literature"):
                 return "book";
+            case "tv":
+                return "tv";
             default:
                 return "book";
         }
