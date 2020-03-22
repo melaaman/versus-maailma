@@ -30,7 +30,7 @@ export const ShortTextBox = (props: ShortTextBoxProps) => {
                 </Card.Content>
                 <Card.Content extra>
                     <i className={`${getIcon(genre)} icon`} />
-                    {author}: {work} ({publisher} {year})<br />{date}
+                    {author}: {work} ({publisher ? publisher + " " : ""}{year})<br />{date}
                 </Card.Content>
             </Card >
         </div>
