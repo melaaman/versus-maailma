@@ -16,6 +16,10 @@ export const ShortTextBox = (props: ShortTextBoxProps) => {
                 return "book";
             case "tv":
                 return "tv";
+            case "movie":
+                return "film";
+            case "game":
+                return "game";
             default:
                 return "book";
         }
