@@ -22,10 +22,16 @@ export const ShortTexts = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        let isSubscribed = true;
         getAll().then(data => {
-            setLoading(false);
-            setShortTexts(data);
+            if (isSubscribed) {
+                setLoading(false);
+                setShortTexts(data);
+            }
         });
+        return () => {
+            isSubscribed = false;
+        }
     }, []);
 
     function handleTextOnChange(event: React.FormEvent<HTMLInputElement>) {
