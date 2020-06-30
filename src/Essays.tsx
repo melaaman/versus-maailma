@@ -11,7 +11,7 @@ export const Essays = () => {
             <List divided relaxed>
                 {collection1.map(essay => {
                     return (
-                        <List.Item key={essay.url}>
+                        <List.Item key={essay.url} style={{ padding: "10px" }}>
                             <List.Content>
                                 <List.Header className="Essays-header">
                                     <Link to={"/esseita/" + essay.url}>

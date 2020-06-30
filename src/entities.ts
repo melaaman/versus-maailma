@@ -1,5 +1,6 @@
 import { OnFiction } from "./essays/OnFiction";
 import { Lectio } from "./essays/Lectio";
+import { OnCareer } from "./essays/OnCareer";
 
 export interface EssayStructure {
     title: string;
@@ -23,7 +24,8 @@ export type Genre = "literature" | "movie" | "tv" | "game";
 
 
 export const collection1 = [
-    OnFiction,
-    Lectio
+    OnCareer,
+    Lectio,
+    OnFiction
 ];
 
