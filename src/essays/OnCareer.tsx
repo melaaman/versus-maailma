@@ -160,7 +160,7 @@ export const OnCareer: EssayStructure = {
         </p>
         <p>
             Oli koodaripula todellinen tai ei, voi hyvinkin tulla päivä, kun työmarkkinoiden levottomat tuulet kääntyvät taas eikä minua enää
-            tarvita. Koodausta en joka tapauksessa aio lopettaa. En lopettanut lukemista ja kirjoittamistaan, vaikka lakkasin tekemästä niitä
+            tarvita. Koodausta en joka tapauksessa aio lopettaa. En lopettanut lukemista ja kirjoittamistakaan, vaikka lakkasin tekemästä niitä
             työkseni. Päinvastoin rakkauteni kirjoihin ja kirjoittamiseen sai uuden elämän, se kun oli työelämän puristuksessa kuihtua
             pois. Uran takia ei kannata menettää intohimoaan.
         </p>
