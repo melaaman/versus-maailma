@@ -3,7 +3,6 @@
   text-align: center;
   grid-template-rows: auto auto 1fr auto;
   height: 100vh;
-  font-size: small;
   letter-spacing: 1px;
 }
 

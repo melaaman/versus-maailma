@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Dropdown, DropdownProps, Loader } from 'semantic-ui-react'
+import React, { useEffect, useState, FormEvent } from 'react';
+import { Dropdown, DropdownProps, Loader } from 'semantic-ui-react';
 import { getAll } from "./texts";
 import { ShortTextBox } from "./ShortTextBox";
 import { ShortTextStructure } from "./entities";
@@ -15,18 +15,21 @@ const dropdownOptions = [
 
 export const ShortTexts = () => {
     let initialShortTextState: ShortTextStructure[] = [];
+    let initialAccordionState: boolean[] = [];
 
     const [shortTexts, setShortTexts] = useState(initialShortTextState);
     const [currentGenre, setCurrentGenre] = useState("all");
     const [filterState, setFilterState] = useState("");
     const [loading, setLoading] = useState(true);
+    const [accordionState, setAccordionState] = useState(initialAccordionState);
 
     useEffect(() => {
         let isSubscribed = true;
-        getAll().then(data => {
+        getAll().then((data: ShortTextStructure[]) => {
             if (isSubscribed) {
                 setLoading(false);
                 setShortTexts(data);
+                setAccordionState(Array(data.length).fill(false));
             }
         });
         return () => {
@@ -34,7 +37,7 @@ export const ShortTexts = () => {
         }
     }, []);
 
-    function handleTextOnChange(event: React.FormEvent<HTMLInputElement>) {
+    function handleTextOnChange(event: FormEvent<HTMLInputElement>) {
         setFilterState(event.currentTarget.value);
     }
 
@@ -51,6 +54,17 @@ export const ShortTexts = () => {
     function getFilteredShortTexts(): ShortTextStructure[] {
         const filteredByGenre = currentGenre === "all" ? shortTexts : shortTexts.filter(text => text.genre === currentGenre);
         return filteredByGenre.filter(text => isKeywordIncluded(text.author) || isKeywordIncluded(text.work));
+    };
+
+    function handleOnClick(itemIndex: number) {
+        let newAccordionState: boolean[] = [];
+        accordionState.forEach((item, index) => {
+            if (index === itemIndex) {
+                item = !item;
+            }
+            newAccordionState.push(item);
+        });
+        setAccordionState(newAccordionState);
     };
 
     return (
@@ -72,7 +86,7 @@ export const ShortTexts = () => {
                 <Loader active={loading} inline='centered' style={{ marginTop: "40px" }} />
                 {getFilteredShortTexts().reverse().map((text, index) => {
                     return (
-                        <ShortTextBox key={index} shortText={text} />
+                        <ShortTextBox key={index} shortText={text} isActive={accordionState[index] ? accordionState[index] : false} onClick={() => handleOnClick(index)} />
                     );
                 })}
             </div>

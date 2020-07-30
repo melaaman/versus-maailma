@@ -5,7 +5,7 @@ import { OnCareer } from "./essays/OnCareer";
 export interface EssayStructure {
     title: string;
     url: string;
-    description: JSX.Element,
+    description: JSX.Element;
     content: JSX.Element;
 }
 
@@ -16,7 +16,7 @@ export interface ShortTextStructure {
     work: string;
     genre: Genre;
     content: string;
-    year: string,
+    year: string;
     publisher?: string;
 }
 

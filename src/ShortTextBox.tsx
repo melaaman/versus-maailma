@@ -1,16 +1,18 @@
 import React from 'react';
-import { Card } from "semantic-ui-react";
+import { Card, Accordion, Icon } from "semantic-ui-react";
 import { ShortTextStructure, Genre } from "./entities";
 import './ShortTextBox.scss';
 
 interface ShortTextBoxProps {
     shortText: ShortTextStructure;
+    isActive: boolean;
+    onClick: () => void;
 }
 
 export const ShortTextBox = (props: ShortTextBoxProps) => {
     const { date, title, work, author, genre, year, content, publisher } = props.shortText;
 
-    const getIcon = (genre: Genre) => {
+    const getGenreIcon = (genre: Genre) => {
         switch (genre) {
             case ("literature"):
                 return "book";
@@ -28,12 +30,17 @@ export const ShortTextBox = (props: ShortTextBoxProps) => {
     return (
         <div className="ShortTextBox">
             <Card style={{ width: "inherit" }} className={`active content`}>
-                <Card.Content style={{ fontWeight: "bold" }} header={title.toUpperCase()} />
-                <Card.Content style={{ textAlign: "justify", fontSize: "larger" }}>
-                    {content}
-                </Card.Content>
+                <Accordion>
+                    <Accordion.Title active={props.isActive} style={{ fontWeight: "bold", paddingTop: "10px" }} onClick={props.onClick}>
+                        <Icon name='dropdown' />
+                        {title.toUpperCase()}
+                    </Accordion.Title>
+                    <Accordion.Content active={props.isActive} style={{ textAlign: "justify", fontSize: "larger", padding: "15px" }}>
+                        {content}
+                    </Accordion.Content>
+                </Accordion>
                 <Card.Content extra>
-                    <i className={`${getIcon(genre)} icon`} />
+                    <i className={`${getGenreIcon(genre)} icon`} />
                     {author}: {work} ({publisher ? publisher + " " : ""}{year})<br />{date}
                 </Card.Content>
             </Card >
