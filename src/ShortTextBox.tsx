@@ -27,6 +27,12 @@ export const ShortTextBox = (props: ShortTextBoxProps) => {
         }
     };
 
+    const contentStyle = {
+        textAlign: "justify",
+        fontSize: "larger",
+        padding: "15px"
+    }
+
     return (
         <div className="ShortTextBox">
             <Card style={{ width: "inherit" }} className={`active content`}>
@@ -35,7 +41,10 @@ export const ShortTextBox = (props: ShortTextBoxProps) => {
                         <Icon name='dropdown' />
                         {title.toUpperCase()}
                     </Accordion.Title>
-                    <Accordion.Content active={props.isActive} style={{ textAlign: "justify", fontSize: "larger", padding: "15px" }}>
+                    <Accordion.Content active={!props.isActive} style={{ ...contentStyle, textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
+                        {content}
+                    </Accordion.Content>
+                    <Accordion.Content active={props.isActive} style={contentStyle}>
                         {content}
                     </Accordion.Content>
                 </Accordion>
